@@ -13,9 +13,17 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
+import pageObjects.CareHome;
 import pageObjects.DOB;
+import pageObjects.Diabetes;
+import pageObjects.Glaucoma;
+import pageObjects.InjuryOrIllness;
+import pageObjects.OutcomePage;
 import pageObjects.Partner;
+import pageObjects.PregnantorGivenBirth;
+import pageObjects.SavingsorProperty;
 import pageObjects.StartPage;
+import pageObjects.TaxBenefits;
 import pageObjects.WhereYouLive;
 import resources.Base;
 
@@ -31,25 +39,37 @@ public class HomePage extends Base {
 	}
 
 	@Test
-	public void navigateToHomePage() throws IOException
+	public void navigateToHomePage() throws IOException, InterruptedException
 	{
 		
 		StartPage Sp = new StartPage(drive);
 		Sp.AcceptCookies().click();
-		Sp.GetStarted().click();
-		WhereYouLive country = new WhereYouLive(drive);
+		WhereYouLive country = Sp.GetStarted();
 		JavascriptExecutor jse = (JavascriptExecutor)drive;
 		jse.executeScript("arguments[0].click()", country.SelectWales());
-		country.Next().click();
-		DOB db = new DOB(drive);
+		DOB db = country.Next();
 		db.day().sendKeys("12");
 		db.month().sendKeys("11");
 		db.year().sendKeys("1992");
-		db.nextbutton().click();
-		Partner partnerobj = new Partner(drive);
-		JavascriptExecutor js = (JavascriptExecutor)drive;
-		js.executeScript("arguments[0].click()", partnerobj.Nopartnersupport());
-		partnerobj.Nextbutton().click();
+		Partner partnerobj = db.nextbutton();
+		partnerobj.Nopartnersupport();
+		TaxBenefits Tax = partnerobj.Nextbutton();
+		Tax.noTaxBenefits();
+		PregnantorGivenBirth PB= Tax.Nextbutton();
+		PB.notPregnantorgivenBirth();
+		InjuryOrIllness Il= PB.Nextbutton();
+		Il.NoInjury();
+		Diabetes Db = Il.Next();
+		Db.NoDiabetes();
+		Glaucoma gl = Db.NextButton();
+		gl.NoGlaucoma();
+		CareHome peramentincarehome = gl.NextButton();
+		peramentincarehome.notInCareHome();
+		SavingsorProperty sp = peramentincarehome.NextButton();
+		sp.NoElegible();
+		OutcomePage  Op = sp.Nextbutton();
+		System.out.println(Op.prescriptionOutcome().getText());		
+		
 }
 	
 	@AfterTest

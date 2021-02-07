@@ -13,16 +13,19 @@ public class StartPage {
 		this.driver=driver;
 	}
 	
-	By start = By.xpath("//input[@value='Start']");
-	By okwithCookies = By.id("nhsuk-cookie-banner__link_accept_analytics");
+	private By start = By.xpath("//input[@value='Start']");
+	private By okwithCookies = By.id("nhsuk-cookie-banner__link_accept_analytics");
 	
 	public WebElement AcceptCookies()
 	{
-		return driver.findElement(okwithCookies);
+		return driver.findElement(okwithCookies) ;
 	}
-	public WebElement GetStarted()
+	public WhereYouLive GetStarted()
 	{
-		return driver.findElement(start);
+		driver.findElement(start).click();
+		WhereYouLive country = new WhereYouLive(driver);
+		return country;
+		
 	}
 	
 

@@ -13,10 +13,10 @@ public WebDriver driver;
 		this.driver=driver;
 	}
 	
-	By day = By.name("dateOfBirth.day");
-	By month = By.id("dob-month");
-	By year = By.id("dob-year");
-	By next = By.id("next-button");
+	private By day = By.name("dateOfBirth.day");
+	private By month = By.id("dob-month");
+	private By year = By.id("dob-year");
+	private By next = By.id("next-button");
 	
 	public WebElement day()
 	{
@@ -33,9 +33,11 @@ public WebDriver driver;
 		return driver.findElement(year);
 	}
 	
-	public WebElement nextbutton()
+	public Partner nextbutton()
 	{
-		return driver.findElement(next);
+		driver.findElement(next).click();
+		Partner partnerobj = new Partner(driver);
+		return partnerobj;
 	}
 	
 }

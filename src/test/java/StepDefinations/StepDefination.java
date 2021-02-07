@@ -22,12 +22,12 @@ public class StepDefination
 
     @When("^I put my circumstances into the checker tool$")
     public void i_put_my_circumstances_into_the_checker_tool() throws Throwable {
-  
+        
     }
 
     @Then("^I should get a result of wheather i will get help or not$")
     public void i_should_get_a_result_of_wheather_i_will_get_help_or_not() throws Throwable {
-     
+        
     }
 
 }

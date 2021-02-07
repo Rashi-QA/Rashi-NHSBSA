@@ -1,43 +1,36 @@
 package pageObjects;
 
-import java.util.List;
-
-import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
-public class Partner extends Common{
+public class CareHome extends Common{
 
 public WebDriver driver;
 	
-	public Partner(WebDriver driver)
+	public CareHome (WebDriver driver)
 	{
 		super(driver);
 		this.driver=driver;
 	}
 	
-	public void Nopartnersupport()
+	public void notInCareHome()
 	{
 		JavascriptExecutor js = (JavascriptExecutor)driver;
 	    js.executeScript("arguments[0].click()", decline());
 	}
 	
-	public void withPartner()
+	public void inCareHome()
 	{
 		JavascriptExecutor js = (JavascriptExecutor)driver;
 	    js.executeScript("arguments[0].click()", accept());
 	}
 	
-	
-	public TaxBenefits Nextbutton()
+	public SavingsorProperty NextButton()
 	{
 		next().click();
-		TaxBenefits taxes = new TaxBenefits(driver);
-		return taxes;
-		
+		SavingsorProperty sp = new SavingsorProperty(driver);
+		return sp;
 	}
-}
-	
-	
 
+
+}

@@ -13,16 +13,20 @@ public class WhereYouLive {
 		this.driver=driver;
 	}
 	
-	By ButtonWales = By.xpath("//label[@id='label-wales']/input");
-	By NextButton = By.id("next-button");
+	private By ButtonWales = By.xpath("//label[@id='label-wales']/input");
+	private By NextButton = By.id("next-button");
 	
 	public WebElement SelectWales()
 	{
 		return driver.findElement(ButtonWales);
 	}
 	
-	public WebElement Next()
+	public DOB Next()
 	{
-		return driver.findElement(NextButton);
+		driver.findElement(NextButton).click();
+		DOB db = new DOB(driver);
+		return db;
+		
+		
 	}
 }

@@ -1,43 +1,32 @@
 package pageObjects;
 
-import java.util.List;
-
-import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
-public class Partner extends Common{
+public class TaxBenefits extends Common{
 
-public WebDriver driver;
-	
-	public Partner(WebDriver driver)
+	public TaxBenefits(WebDriver driver)
 	{
 		super(driver);
 		this.driver=driver;
 	}
 	
-	public void Nopartnersupport()
+	public void noTaxBenefits()
 	{
 		JavascriptExecutor js = (JavascriptExecutor)driver;
 	    js.executeScript("arguments[0].click()", decline());
 	}
 	
-	public void withPartner()
+	public void taxCredits()
 	{
 		JavascriptExecutor js = (JavascriptExecutor)driver;
 	    js.executeScript("arguments[0].click()", accept());
 	}
 	
-	
-	public TaxBenefits Nextbutton()
+	public PregnantorGivenBirth Nextbutton()
 	{
 		next().click();
-		TaxBenefits taxes = new TaxBenefits(driver);
-		return taxes;
-		
+		PregnantorGivenBirth PB= new PregnantorGivenBirth(driver);
+		return PB;
 	}
 }
-	
-	
-
