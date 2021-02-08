@@ -13,12 +13,16 @@ public WebDriver driver;
 		this.driver=driver;
 	}
 	
-	By prescription_id = By.id("wales-prescription-restriction");
+	//By outcome = By.xpath("//span[contains(text(),'Based on what')]/following-sibling::text()");
+	By outcome = By.cssSelector("#result-heading");
 	
-	public WebElement prescriptionOutcome()
+	public  WebElement result()
 	{
-		return driver.findElement(prescription_id);
-    }
+		return driver.findElement(outcome);
+	}
+	 
+	
+    
 	
 	
 }
